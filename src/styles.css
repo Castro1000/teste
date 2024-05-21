@@ -18,7 +18,7 @@ body {
   }
   
   .search-banner {
-    max-width: 100%;
+    max-width: auto;
     height: auto;
     margin-bottom: -40px;
     border-radius: 8px;
