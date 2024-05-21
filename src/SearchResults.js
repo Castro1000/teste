@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 const SearchResults = ({ results }) => {
   return (
@@ -18,3 +19,4 @@ const SearchResults = ({ results }) => {
 };
 
 export default SearchResults;
+
