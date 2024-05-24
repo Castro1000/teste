@@ -31,6 +31,11 @@ const SearchResults = ({ results }) => {
     } else {
       setSelectedProducts([...selectedProducts, { product, quantity }]);
     }
+    // Reset the quantity input field
+    setQuantities({
+      ...quantities,
+      [product.description]: 1
+    });
   };
 
   const handleGenerateQuote = () => {
@@ -111,7 +116,7 @@ const SearchResults = ({ results }) => {
           <input
             type="number"
             min="1"
-            value={quantities[result.description] || 1}
+            value={quantities[result.description] || ''}
             onChange={(e) => handleQuantityChange(e, result)}
             className="quantity-input"
           />

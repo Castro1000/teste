@@ -18,8 +18,8 @@ header {
 }
 
 .search-banner {
-  width: 50% 10%;
-  height: auto;
+  width: 90% -10%;
+  height: auto%;
   margin-bottom: -40px;
   border-radius: 8px;
 }
