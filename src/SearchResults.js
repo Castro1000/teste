@@ -94,7 +94,7 @@ const SearchResults = ({ results }) => {
     `);
     quoteWindow.document.write('</style>');
     quoteWindow.document.write('</head><body>');
-    quoteWindow.document.write('<div class="header"><img src="https://example.com/banner.jpg" alt="Banner" /></div>');
+    quoteWindow.document.write('<div class="header"><img src="https://www.sistemasmais.net/pneuforte.png?v=3be4g022c5xjr7" alt="Banner" /></div>');
     quoteWindow.document.write('<h2>Folha de Orçamento</h2>');
     quoteWindow.document.write(quoteContent);
     quoteWindow.document.write(`<h3>Total: R$${totalAmount.toFixed(2).replace('.', ',')}</h3>`);
