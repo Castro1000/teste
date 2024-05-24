@@ -5,17 +5,17 @@ import './styles.css';
 const App = () => {
   const results = [
     {
-      description: "Produto 1",
-      price: "100,00",
+      description: "175/60R15 H/T 81H SPLM704 DUNL",
+      price: "253,00",
       quantity: 10,
-      branch: "Filial A",
+      branch: "Filial 1",
       image: "https://example.com/imagem1.jpg"
     },
     {
-      description: "Produto 2",
-      price: "200,00",
+      description: "185/35R17 H/T 82V SPORT+2 XLOAD XBRI",
+      price: "261,00",
       quantity: 5,
-      branch: "Filial B",
+      branch: "Filial 10",
       image: "https://example.com/imagem2.jpg"
     },
     // mais resultados...
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYqzRhmwR2lWrfgPJzYghPiDqJA5NRk1d8PGpyCIAKTQ&s" alt="IMAGEM" className="search-banner" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjU1zG1G7_CCe55bDZDWPoRr_-OluX5WXFMcAeGTjb5Q&s" alt="Banner da Busca" className="search-banner" />
         <SearchBar />
       </header>
       <SearchResults results={results} />
