@@ -91,16 +91,57 @@ const SearchResults = ({ results }) => {
         background: #ddd;
         margin: 10px 0;
       }
+      .button-group {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .button-group button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 10px;
+      }
+      .share-button {
+        background-color: #28a745;
+        color: white;
+      }
+      .back-button {
+        background-color: #007bff;
+        color: white;
+      }
     `);
     quoteWindow.document.write('</style>');
     quoteWindow.document.write('</head><body>');
-    quoteWindow.document.write('<div class="header"><img src="https://www.sistemasmais.net/pneuforte.png?v=3be4g022c5xjr7" alt="Banner" /></div>');
+    quoteWindow.document.write('<div class="header"><img src="https://example.com/banner.jpg" alt="Banner" /></div>');
     quoteWindow.document.write('<h2>Folha de Orçamento</h2>');
     quoteWindow.document.write(quoteContent);
     quoteWindow.document.write(`<h3>Total: R$${totalAmount.toFixed(2).replace('.', ',')}</h3>`);
+    quoteWindow.document.write('<div class="button-group">');
+    quoteWindow.document.write('<button class="share-button" onclick="shareQuote()">Compartilhar Orçamento</button>');
+    quoteWindow.document.write('<button class="back-button" onclick="window.location.href=\'/\'">Voltar à Página Inicial</button>');
+    quoteWindow.document.write('</div>');
+    quoteWindow.document.write('<script>');
+    quoteWindow.document.write(`
+      function shareQuote() {
+        const shareData = {
+          title: 'Orçamento',
+          text: 'Veja o orçamento que fiz.',
+          url: window.location.href
+        };
+        if (navigator.share) {
+          navigator.share(shareData).then(() => {
+            console.log('Orçamento compartilhado com sucesso');
+          }).catch(console.error);
+        } else {
+          alert('Compartilhamento não suportado neste navegador');
+        }
+      }
+    `);
+    quoteWindow.document.write('</script>');
     quoteWindow.document.write('</body></html>');
     quoteWindow.document.close();
-    quoteWindow.print();
   };
 
   return (
