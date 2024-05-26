@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
+const db = mysql.createConnection({ //Elizeu //
   host: 'localhost',
   user: 'root',
   password: 'yourpassword',
@@ -21,7 +21,7 @@ db.connect(err => {
   console.log('connected as id ' + db.threadId);
 });
 
-app.get('/search', (req, res) => {
+app.get('/search', (req, res) => { //Elizeu//
   const query = req.query.q;
   const sql = `SELECT description, price, quantity, branch FROM tires WHERE description LIKE ?`;
   db.query(sql, [`%${query}%`], (err, results) => {

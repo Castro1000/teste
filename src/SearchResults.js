@@ -4,6 +4,11 @@ import './styles.css';
 const SearchResults = ({ results }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [quantities, setQuantities] = useState({});
+  const [dollarRate, setDollarRate] = useState('');
+
+  const handleDollarRateChange = (e) => {
+    setDollarRate(e.target.value);
+  };
 
   const handleQuantityChange = (e, product) => {
     const { value } = e.target;
@@ -15,10 +20,12 @@ const SearchResults = ({ results }) => {
 
   const handleSelectProduct = (product) => {
     const quantity = parseInt(quantities[product.description] || 1, 10);
+
     if (isNaN(quantity) || quantity <= 0) {
       alert('Por favor, insira uma quantidade válida.');
       return;
     }
+
     const existingProduct = selectedProducts.find(item => item.product.description === product.description);
     if (existingProduct) {
       setSelectedProducts(
@@ -31,10 +38,11 @@ const SearchResults = ({ results }) => {
     } else {
       setSelectedProducts([...selectedProducts, { product, quantity }]);
     }
+
     // Reset the quantity input field
     setQuantities({
       ...quantities,
-      [product.description]: 1
+      [product.description]: ''
     });
   };
 
@@ -48,7 +56,6 @@ const SearchResults = ({ results }) => {
         <p><strong>Descrição:</strong> ${item.product.description}</p>
         <p><strong>Valor:</strong> R$${item.product.price}</p>
         <p><strong>Quantidade:</strong> ${item.quantity}</p>
-        <p><strong>Filial:</strong> ${item.product.branch}</p>
         <hr />
       </div>`
     )).join('');
@@ -91,82 +98,85 @@ const SearchResults = ({ results }) => {
         background: #ddd;
         margin: 10px 0;
       }
-      .button-group {
+      .button-container {
         text-align: center;
         margin-top: 20px;
       }
-      .button-group button {
+      .button-container button {
         padding: 10px 20px;
         font-size: 16px;
         border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin: 0 10px;
-      }
-      .share-button {
-        background-color: #28a745;
-        color: white;
-      }
-      .back-button {
         background-color: #007bff;
         color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .button-container button:hover {
+        background-color: #0056b3;
       }
     `);
     quoteWindow.document.write('</style>');
     quoteWindow.document.write('</head><body>');
-    quoteWindow.document.write('<div class="header"><img src="https://example.com/banner.jpg" alt="Banner" /></div>');
-    quoteWindow.document.write('<h2>Folha de Orçamento</h2>');
+    quoteWindow.document.write('<div class="header"><img src="banner-image-url.jpg" alt="Banner" /></div>');
+    quoteWindow.document.write('<h2>Orçamento</h2>');
     quoteWindow.document.write(quoteContent);
-    quoteWindow.document.write(`<h3>Total: R$${totalAmount.toFixed(2).replace('.', ',')}</h3>`);
-    quoteWindow.document.write('<div class="button-group">');
-    quoteWindow.document.write('<button class="share-button" onclick="shareQuote()">Compartilhar Orçamento</button>');
-    quoteWindow.document.write('<button class="back-button" onclick="window.location.href=\'/\'">Voltar à Página Inicial</button>');
-    quoteWindow.document.write('</div>');
-    quoteWindow.document.write('<script>');
-    quoteWindow.document.write(`
-      function shareQuote() {
-        const shareData = {
-          title: 'Orçamento',
-          text: 'Veja o orçamento que fiz.',
-          url: window.location.href
-        };
-        if (navigator.share) {
-          navigator.share(shareData).then(() => {
-            console.log('Orçamento compartilhado com sucesso');
-          }).catch(console.error);
-        } else {
-          alert('Compartilhamento não suportado neste navegador');
-        }
-      }
-    `);
-    quoteWindow.document.write('</script>');
+    quoteWindow.document.write(`<h3>Total: R$${totalAmount.toFixed(2)}</h3>`);
+    if (dollarRate) {
+      const totalDollar = (totalAmount / parseFloat(dollarRate)).toFixed(2);
+      quoteWindow.document.write(`<h3>Total em Dólar: $${totalDollar}</h3>`);
+    }
+    quoteWindow.document.write('<div class="button-container"><button onclick="window.print()">Imprimir</button></div>');
     quoteWindow.document.write('</body></html>');
     quoteWindow.document.close();
   };
 
   return (
     <div className="search-results">
+      <div className="dollar-rate">
+        <label htmlFor="dollarRate">Cotação do Dólar:</label>
+        <input
+          type="number"
+          id="dollarRate"
+          value={dollarRate}
+          onChange={handleDollarRateChange}
+          placeholder="Ex: 5.25"
+        />
+      </div>
       <h2>RESULTADOS DA BUSCA:</h2>
-      <p>Produtos Selecionados: {selectedProducts.reduce((total, item) => total + item.quantity, 0)}</p>
-      {results.map((result, index) => (
-        <div key={index} className="search-result-item">
-          <p><strong>Descrição:</strong> {result.description}</p>
-          <p><strong>Valor:</strong> R${result.price}</p>
-          <p><strong>Quantidade em Estoque:</strong> {result.quantity}</p>
-          <p><strong>Filial:</strong> {result.branch}</p>
-          <input
-            type="number"
-            min="1"
-            value={quantities[result.description] || ''}
-            onChange={(e) => handleQuantityChange(e, result)}
-            className="quantity-input"
-          />
-          <button onClick={() => handleSelectProduct(result)}>Selecionar Produto</button>
-          <hr />
-        </div>
-      ))}
+      {results.map((result, index) => {
+        const selectedProduct = selectedProducts.find(item => item.product.description === result.description);
+        const selectedQuantity = selectedProduct ? selectedProduct.quantity : 0;
+
+        return (
+          <div key={index} className="search-result-item">
+            <p><strong>Descrição:</strong> {result.description}</p>
+            <p><strong>Valor:</strong> R${result.price}</p>
+            <p><strong>Quantidade em Estoque:</strong> {result.quantity}</p>
+            <p><strong>Filial:</strong> {result.branch}</p>
+            <div>
+              <label htmlFor={`quantity-${index}`}>Quantidade:</label>
+              <input
+                type="number"
+                id={`quantity-${index}`}
+                className="quantity-input"
+                value={quantities[result.description] || ''}
+                onChange={(e) => handleQuantityChange(e, result)}
+                min="1"
+              />
+              <button onClick={() => handleSelectProduct(result)}>Adicionar ao Orçamento</button>
+              {selectedQuantity > 0 && (
+                <span className="added-quantity"> Adicionado: {selectedQuantity}</span>
+              )}
+            </div>
+            <hr />
+          </div>
+        );
+      })}
       {selectedProducts.length > 0 && (
-        <button onClick={handleGenerateQuote} className="generate-quote-button">Gerar Folha de Orçamento</button>
+        <button className="generate-quote-button" onClick={handleGenerateQuote}>
+          Gerar Orçamento
+        </button>
       )}
     </div>
   );
