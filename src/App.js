@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjU1zG1G7_CCe55bDZDWPoRr_-OluX5WXFMcAeGTjb5Q&s" alt="Banner da Busca" className="search-banner" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s" alt="Banner da Busca" className="search-banner" />
         <SearchBar />
       </header>
       <SearchResults results={results} />

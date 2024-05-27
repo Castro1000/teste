@@ -140,7 +140,7 @@ const SearchResults = ({ results }) => {
           id="dollarRate"
           value={dollarRate}
           onChange={handleDollarRateChange}
-          placeholder="Ex: 5.25"
+          placeholder="R$"
         />
       </div>
       <h2>RESULTADOS DA BUSCA:</h2>
