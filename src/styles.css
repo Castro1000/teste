@@ -54,11 +54,12 @@ header:before {
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ddd;
+  margin: 5px;
   border-radius: 4px;
-  margin-right: 10px;
-  width: 60%;
+  width: 70%;
   max-width: 400px;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .search-bar input:focus {
