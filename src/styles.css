@@ -17,6 +17,7 @@ header {
   background: linear-gradient(145deg, #ffffff, #fcfcfc);
   color: #000000;
   padding: 5px;
+  margin-top: 5px;
   margin-bottom: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(3, 0, 0, 0.685);
@@ -48,15 +49,17 @@ header:before {
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
+  margin-top: 2px;
 }
 
 .search-bar input {
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ddd;
-  margin: 5px;
+  margin: 10px;
+  margin-top: 2px;
   border-radius: 4px;
-  width: 70%;
+  width: 60%;
   max-width: 400px;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
