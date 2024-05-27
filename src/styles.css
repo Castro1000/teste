@@ -85,14 +85,11 @@ header:before {
 }
 
 .search-results {
-  margin: 20px auto;
+  margin: 20px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: calc(100% - 40px);
-  max-width: 800px;
-  box-sizing: border-box;
 }
 
 .search-results h2 {
