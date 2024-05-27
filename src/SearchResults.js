@@ -39,7 +39,6 @@ const SearchResults = ({ results }) => {
       setSelectedProducts([...selectedProducts, { product, quantity }]);
     }
 
-    // Reset the quantity input field
     setQuantities({
       ...quantities,
       [product.description]: ''
@@ -111,9 +110,22 @@ const SearchResults = ({ results }) => {
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        margin: 5px;
       }
       .button-container button:hover {
         background-color: #0056b3;
+      }
+      .button-container .back-button {
+        background-color: #28a745;
+      }
+      .button-container .back-button:hover {
+        background-color: #218838;
+      }
+      .button-container .whatsapp-button {
+        background-color: #25d366;
+      }
+      .button-container .whatsapp-button:hover {
+        background-color: #128c7e;
       }
     `);
     quoteWindow.document.write('</style>');
@@ -126,7 +138,20 @@ const SearchResults = ({ results }) => {
       const totalDollar = (totalAmount / parseFloat(dollarRate)).toFixed(2);
       quoteWindow.document.write(`<h3>Total em Dólar: $${totalDollar}</h3>`);
     }
-    quoteWindow.document.write('<div class="button-container"><button onclick="window.print()">Imprimir</button></div>');
+    quoteWindow.document.write('<div class="button-container">');
+    quoteWindow.document.write('<button onclick="window.print()">Imprimir</button>');
+    quoteWindow.document.write('<button class="back-button" onclick="window.close()">Voltar</button>');
+    quoteWindow.document.write('<button class="whatsapp-button" onclick="shareOnWhatsApp()">Compartilhar no WhatsApp</button>');
+    quoteWindow.document.write('</div>');
+    quoteWindow.document.write(`<script>
+      function shareOnWhatsApp() {
+        const quoteText = 'Orçamento:\\n' + 
+          ${JSON.stringify(selectedProducts.map(item => `${item.product.description} - R$${item.product.price} x ${item.quantity} unidades`))} + 
+          '\\nTotal: R$${totalAmount.toFixed(2)}';
+        const url = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(quoteText);
+        window.open(url, '_blank');
+      }
+    </script>`);
     quoteWindow.document.write('</body></html>');
     quoteWindow.document.close();
   };
