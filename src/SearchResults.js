@@ -14,23 +14,23 @@ const SearchResults = ({ results }) => {
     const { value } = e.target;
     setQuantities({
       ...quantities,
-      [product.description]: value
+      [product.Descricao]: value
     });
   };
 
   const handleSelectProduct = (product) => {
-    const quantity = parseInt(quantities[product.description] || 1, 10);
+    const quantity = parseInt(quantities[product.Descricao] || 1, 10);
 
     if (isNaN(quantity) || quantity <= 0) {
       alert('Por favor, insira uma quantidade válida.');
       return;
     }
 
-    const existingProduct = selectedProducts.find(item => item.product.description === product.description);
+    const existingProduct = selectedProducts.find(item => item.product.Descricao === product.Descricao);
     if (existingProduct) {
       setSelectedProducts(
         selectedProducts.map(item =>
-          item.product.description === product.description
+          item.product.Descricao === product.Descricao
             ? { ...item, quantity: item.quantity + quantity }
             : item
         )
@@ -41,19 +41,19 @@ const SearchResults = ({ results }) => {
 
     setQuantities({
       ...quantities,
-      [product.description]: ''
+      [product.Descricao]: ''
     });
   };
 
   const handleGenerateQuote = () => {
     const totalAmount = selectedProducts.reduce((sum, item) => {
-      return sum + parseFloat(item.product.price.replace(',', '.')) * item.quantity;
+      return sum + parseFloat(item.product.Preco.replace(',', '.')) * item.quantity;
     }, 0);
 
     const quoteContent = selectedProducts.map((item, index) => (
       `<div key=${index} class="quote-item">
-        <p><strong>Descrição:</strong> ${item.product.description}</p>
-        <p><strong>Valor:</strong> R$${item.product.price}</p>
+        <p><strong>Descrição:</strong> ${item.product.Descricao}</p>
+        <p><strong>Valor:</strong> R$${item.product.Preco}</p>
         <p><strong>Quantidade:</strong> ${item.quantity}</p>
         <hr />
       </div>`
@@ -146,7 +146,7 @@ const SearchResults = ({ results }) => {
     quoteWindow.document.write(`<script>
       function shareOnWhatsApp() {
         const quoteText = 'Orçamento:\\n' + 
-          ${JSON.stringify(selectedProducts.map(item => `${item.product.description} - R$${item.product.price} x ${item.quantity} unidades`))} + 
+          ${JSON.stringify(selectedProducts.map(item => `${item.product.Descricao} - R$${item.product.Preco} x ${item.quantity} unidades`))} + 
           '\\nTotal: R$${totalAmount.toFixed(2)}';
         const url = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(quoteText);
         window.open(url, '_blank');
@@ -170,7 +170,7 @@ const SearchResults = ({ results }) => {
       </div>
       <h2>RESULTADOS DA BUSCA:</h2>
       {results.map((result, index) => {
-        const selectedProduct = selectedProducts.find(item => item.product.description === result.description);
+        const selectedProduct = selectedProducts.find(item => item.product.Descricao === result.Descricao);
         const selectedQuantity = selectedProduct ? selectedProduct.quantity : 0;
 
         return (
@@ -178,7 +178,6 @@ const SearchResults = ({ results }) => {
             <p><strong>Descrição:</strong> {result.Descricao}</p>
             <p><strong>Valor:</strong> R${result.Preco}</p>
             <p><strong>Quantidade em Estoque:</strong> {result.Quantidade}</p>
-            <p><strong>Filial:</strong> {result.Cod_marca}</p>
             <div>
               <label htmlFor={`quantity-${index}`}>Quantidade:</label>
               <input

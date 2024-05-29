@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({ //Elizeu //
+const db = mysql.createConnection({
   host: '192.168.1.197',
   user: 'root',
   password: '',
@@ -21,21 +21,17 @@ db.connect(err => {
   console.log('connected as id ' + db.threadId);
 });
 
-app.get('/search', (req, res) => {
+app.get('/api/search', (req, res) => {
   const query = req.query.q;
-  const sql = `SELECT Descricao, Preco, Quantidade, FROM produto WHERE Descricao LIKE ?`;
-
+  const sql = `SELECT Descricao, Preco, Quantidade FROM produto WHERE Descricao LIKE ?`;
+             
   db.query(sql, [`%${query}%`], (err, results) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erro ao executar a consulta no banco de dados.' });
-      return;
-    }
+    if (err) throw err;
     res.json(results);
   });
 });
 
-const PORT = 3000; // Alterado para a porta padrão do Express
+const PORT = 3306;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
