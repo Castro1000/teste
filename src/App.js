@@ -2,13 +2,13 @@ import React from 'react';
 import SearchResults from './SearchResults';
 import './styles.css';
 
+
 const App = () => {
   const results = [
     {
       Descricao: "",
       Preco: "",
-      Quantidade: 10,
-      Cod_marca: "",
+      Quantidade: ""
     },
     // mais resultados...
   ];

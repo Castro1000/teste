@@ -10,7 +10,7 @@ const db = mysql.createConnection({ //Elizeu //
   host: '192.168.1.197',
   user: 'root',
   password: '',
-  database: ''
+  database: 'sgveauto'
 });
 
 db.connect(err => {
@@ -21,17 +21,21 @@ db.connect(err => {
   console.log('connected as id ' + db.threadId);
 });
 
-app.get('/search', (req, res) => { //Elizeu//
+app.get('/search', (req, res) => {
   const query = req.query.q;
-//  const sql = `SELECT description, price, quantity, branch FROM tires WHERE description LIKE ?`;
-const sql = `SELECT Descricao, Preco, Quantidade, Cod_marca FROM produto WHERE Descricao LIKE Descricao ?`;
+  const sql = `SELECT Descricao, Preco, Quantidade, FROM produto WHERE Descricao LIKE ?`;
+
   db.query(sql, [`%${query}%`], (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao executar a consulta no banco de dados.' });
+      return;
+    }
     res.json(results);
   });
 });
 
-const PORT = 3306;
+const PORT = 3000; // Alterado para a porta padrão do Express
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

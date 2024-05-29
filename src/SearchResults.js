@@ -175,17 +175,17 @@ const SearchResults = ({ results }) => {
 
         return (
           <div key={index} className="search-result-item">
-            <p><strong>Descrição:</strong> {result.description}</p>
-            <p><strong>Valor:</strong> R${result.price}</p>
-            <p><strong>Quantidade em Estoque:</strong> {result.quantity}</p>
-            <p><strong>Filial:</strong> {result.branch}</p>
+            <p><strong>Descrição:</strong> {result.Descricao}</p>
+            <p><strong>Valor:</strong> R${result.Preco}</p>
+            <p><strong>Quantidade em Estoque:</strong> {result.Quantidade}</p>
+            <p><strong>Filial:</strong> {result.Cod_marca}</p>
             <div>
               <label htmlFor={`quantity-${index}`}>Quantidade:</label>
               <input
                 type="number"
                 id={`quantity-${index}`}
                 className="quantity-input"
-                value={quantities[result.description] || ''}
+                value={quantities[result.Descricao] || ''}
                 onChange={(e) => handleQuantityChange(e, result)}
                 min="1"
               />
