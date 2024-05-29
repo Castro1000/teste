@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({ //Elizeu //
-  host: 'localhost',
+  host: '192.168.1.197',
   user: 'root',
-  password: 'yourpassword',
-  database: 'yourdatabase'
+  password: '',
+  database: ''
 });
 
 db.connect(err => {
@@ -23,14 +23,15 @@ db.connect(err => {
 
 app.get('/search', (req, res) => { //Elizeu//
   const query = req.query.q;
-  const sql = `SELECT description, price, quantity, branch FROM tires WHERE description LIKE ?`;
+//  const sql = `SELECT description, price, quantity, branch FROM tires WHERE description LIKE ?`;
+const sql = `SELECT Descricao, Preco, Quantidade,Cod_marca FROM produto WHERE Descricao LIKE Descricao ?`;
   db.query(sql, [`%${query}%`], (err, results) => {
     if (err) throw err;
     res.json(results);
   });
 });
 
-const PORT = 5000;
+const PORT = 3306;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
