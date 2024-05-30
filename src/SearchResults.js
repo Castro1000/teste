@@ -158,49 +158,48 @@ const SearchResults = ({ results }) => {
 
   return (
     <div className="search-results">
-      <div className="dollar-rate">
+      <div className="dollar-input">
         <label htmlFor="dollarRate">Cotação do Dólar:</label>
         <input
           type="number"
           id="dollarRate"
+          placeholder="Valor em R$"
           value={dollarRate}
           onChange={handleDollarRateChange}
-          placeholder="R$"
         />
       </div>
-      <h2>RESULTADOS DA BUSCA:</h2>
-      {results.map((result, index) => {
-        const selectedProduct = selectedProducts.find(item => item.product.Descricao === result.Descricao);
-        const selectedQuantity = selectedProduct ? selectedProduct.quantity : 0;
-
-        return (
-          <div key={index} className="search-result-item">
-            <p><strong>Descrição:</strong> {result.Descricao}</p>
-            <p><strong>Valor:</strong> R${result.Preco}</p>
-            <p><strong>Quantidade em Estoque:</strong> {result.Quantidade}</p>
-            <div>
-              <label htmlFor={`quantity-${index}`}>Quantidade:</label>
+      {results.length > 0 && (
+        <ul>
+          {results.map((product) => (
+            <li key={product.Descricao}>
+              <strong>Descrição:</strong> {product.Descricao}<br />
+              <strong>Valor:</strong> R${product.Preco}<br />
+              <strong>Quantidade:</strong> {product.Quantidade}<br />
               <input
                 type="number"
-                id={`quantity-${index}`}
-                className="quantity-input"
-                value={quantities[result.Descricao] || ''}
-                onChange={(e) => handleQuantityChange(e, result)}
-                min="1"
+                placeholder="Quantidade"
+                value={quantities[product.Descricao] || ''}
+                onChange={(e) => handleQuantityChange(e, product)}
               />
-              <button onClick={() => handleSelectProduct(result)}>Adicionar ao Orçamento</button>
-              {selectedQuantity > 0 && (
-                <span className="added-quantity"> Adicionado: {selectedQuantity}</span>
-              )}
-            </div>
-            <hr />
-          </div>
-        );
-      })}
+              <button onClick={() => handleSelectProduct(product)}>Selecionar Produto</button>
+            </li>
+          ))}
+        </ul>
+      )}
       {selectedProducts.length > 0 && (
-        <button className="generate-quote-button" onClick={handleGenerateQuote}>
-          Gerar Orçamento
-        </button>
+        <div>
+          <h2>Produtos Selecionados</h2>
+          <ul>
+            {selectedProducts.map((item, index) => (
+              <li key={index}>
+                <strong>Descrição:</strong> {item.product.Descricao}<br />
+                <strong>Valor:</strong> R${item.product.Preco}<br />
+                <strong>Quantidade:</strong> {item.quantity}
+              </li>
+            ))}
+          </ul>
+          <button onClick={handleGenerateQuote}>Gerar Orçamento</button>
+        </div>
       )}
     </div>
   );
