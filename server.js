@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '192.168.1.197',
+  host: '473702ab5104.sn.mynetname.net',
   user: 'root',
   password: '',
   database: 'sgveauto',
