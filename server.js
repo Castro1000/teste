@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-const port = 3305;
+const port = 3306;
 
 app.use(cors());
 app.use(express.json());
@@ -14,7 +14,6 @@ const db = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'sgveauto',
-  port: 3306 // Porta padrão do MySQL
 });
 
 // Conectar ao banco de dados
@@ -24,19 +23,6 @@ db.connect(err => {
     return;
   }
   console.log('Conectado ao banco de dados MySQL');
-});
-
-// Rota para obter os usuários
-app.get('/usuarios', (req, res) => {
-  const query = 'SELECT nome, login FROM usuario';
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('Erro ao buscar os dados:', err);
-      res.status(500).send('Erro ao buscar os dados');
-      return;
-    }
-    res.json(results);
-  });
 });
 
 // Rota para buscar produtos
