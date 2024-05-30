@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '473702ab5104.sn.mynetname.net',
+  host: '192.168.1.197',
   user: 'root',
   password: '',
   database: 'sgveauto',
@@ -28,7 +28,7 @@ db.connect(err => {
 // Rota para buscar produtos
 app.get('/api/search', (req, res) => {
   const query = req.query.q;
-  const sql = `SELECT Descricao, Preco, quantidade FROM Produto WHERE Descricao LIKE ?`;
+  const sql = `SELECT Descricao, Preco, Quantidade FROM Produto WHERE Descricao LIKE ?`;
   db.query(sql, [`%${query}%`], (err, results) => {
     if (err) {
       console.error('Erro ao buscar os dados:', err);
