@@ -8,7 +8,7 @@ const App = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://192.168.1.197:3306/search?q=${query}`); // Adicionado http://
+      const response = await fetch(`/api/search?q=${query}`);
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }

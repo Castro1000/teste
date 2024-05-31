@@ -1,18 +1,30 @@
 import React from 'react';
-import './styles.css';
 
 const SearchResults = ({ results }) => {
   return (
     <div className="search-results">
-      <h2>RESULTADOS DA PESQUISA:</h2>
-      {results.map((result, index) => (
-        <div key={index} className="search-result-item">
-          <p><strong>Descrição:</strong> {result.Descricao}</p>
-          <p><strong>Preço:</strong> R${result.Preco}</p>
-          <p><strong>Quantidade em Estoque:</strong> {result.Quantidade}</p>
-          <hr />
-        </div>
-      ))}
+      {results.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {results.map((result, index) => (
+              <tr key={index}>
+                <td>{result.Descricao}</td>
+                <td>{result.Preco}</td>
+                <td>{result.Quantidade}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>Nenhum resultado encontrado.</p>
+      )}
     </div>
   );
 };
