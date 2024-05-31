@@ -7,16 +7,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Adicionando flex-wrap para permitir que os elementos quebrem para a próxima linha em telas menores */
 }
 
 .search-banner {
-  max-width: 200px; /* Ajuste conforme necessário */
+  width: 200px; /* Definindo uma largura fixa para a imagem do banner */
+  height: auto; /* Permitindo que a altura da imagem seja ajustada automaticamente para manter a proporção */
 }
 
 .search-bar {
-  display: flex;
   flex-grow: 1;
-  margin-left: 20px;
+  margin-top: 20px; /* Adicionando margem superior para separar o cabeçalho dos resultados da busca */
+  display: flex;
+  justify-content: center; /* Centralizando os elementos dentro do contêiner de pesquisa */
+  align-items: center;
 }
 
 .search-input {
