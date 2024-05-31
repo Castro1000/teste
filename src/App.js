@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <header>
+      <header className="header">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s" alt="Banner da Busca" className="search-banner" />
         <div className="search-bar">
           <input
@@ -31,8 +31,9 @@ const App = () => {
             placeholder="Buscar..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            className="search-input"
           />
-          <button onClick={handleSearch}>Pesquisar</button>
+          <button onClick={handleSearch} className="search-button">Pesquisar</button>
         </div>
       </header>
       <SearchResults results={results} />
