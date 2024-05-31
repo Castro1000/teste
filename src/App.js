@@ -1,3 +1,5 @@
+// App.js (Frontend)
+
 import React, { useState } from 'react';
 import SearchResults from './SearchResults';
 import './styles.css';
@@ -8,7 +10,7 @@ const App = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`/api/search?q=${query}`);
+      const response = await fetch(`http://localhost:3306/api/search?q=${query}`);
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }
@@ -22,7 +24,7 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        <img src="./LOGO PNEU FORTE TODA PRETA.png" alt="Banner da Busca" className="search-banner" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s" alt="Banner da Busca" className="search-banner" />
         <div className="search-bar">
           <input
             type="text"

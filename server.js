@@ -1,17 +1,18 @@
+// server.js (Backend)
+
 const express = require('express');
 const mysql = require('mysql');
-const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3306; // Porta do servidor Node.js
+const port = 3306; // Porta do servidor Node.js
 
 app.use(cors());
 app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '192.168.1.197', // Atualize com seu novo host, se necessário
+  host: '192.168.1.197',
   user: 'root',
   password: '',
   database: 'sgveauto',
@@ -38,13 +39,6 @@ app.get('/api/search', (req, res) => {
     }
     res.json(results);
   });
-});
-
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(port, () => {
