@@ -24,7 +24,11 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s" alt="Banner da Busca" className="search-banner" />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s"
+          alt="Banner da Busca"
+          className="search-banner"
+        />
         <div className="search-bar">
           <input
             type="text"

@@ -18,7 +18,14 @@ const SearchResults = ({ results }) => {
             {results.map((result, index) => (
               <tr key={index}>
                 <td>{result.Descricao}</td>
-                <td>{result.Preco}</td>
+                <td>
+                  {Number(result.Preco).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 4,
+                    maximumFractionDigits: 4,
+                  })}
+                </td>
                 <td>{result.Quantidade}</td>
               </tr>
             ))}
