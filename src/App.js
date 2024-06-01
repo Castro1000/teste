@@ -1,5 +1,3 @@
-// App.js (Frontend)
-
 import React, { useState } from 'react';
 import SearchResults from './SearchResults';
 import './styles.css';
@@ -7,6 +5,7 @@ import './styles.css';
 const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
+  const [cart, setCart] = useState([]);
 
   const handleSearch = async () => {
     try {
@@ -19,6 +18,23 @@ const App = () => {
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
+  };
+
+  const handleAddToCart = (product, quantity) => {
+    setCart([...cart, { ...product, quantity: parseInt(quantity) }]);
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => {
+      return total + item.Preco * item.quantity;
+    }, 0);
+  };
+
+  const handleGenerateQuote = () => {
+    // Redirecionar para a página de orçamento, passando os dados do orçamento
+    const quoteData = JSON.stringify(cart);
+    localStorage.setItem('quoteData', quoteData);
+    window.location.href = '/quote';
   };
 
   return (
@@ -40,7 +56,23 @@ const App = () => {
           <button onClick={handleSearch} className="search-button">Pesquisar</button>
         </div>
       </header>
-      <SearchResults results={results} />
+      <SearchResults results={results} onAddToCart={handleAddToCart} cart={cart} />
+      {cart.length > 0 && (
+        <div className="cart-summary">
+          <h3>
+            Total: 
+            {Number(calculateTotal()).toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 4,
+              maximumFractionDigits: 4,
+            })}
+          </h3>
+          <button onClick={handleGenerateQuote} className="generate-quote-button">
+            Gerar Orçamento
+          </button>
+        </div>
+      )}
     </div>
   );
 };

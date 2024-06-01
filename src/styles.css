@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Estilos para o cabeçalho */
 .header {
   background-color: #f8f9fa;
@@ -7,20 +5,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Adicionando flex-wrap para permitir que os elementos quebrem para a próxima linha em telas menores */
+  flex-wrap: wrap; /* Adicionando flex-wrap para permitir que os elementos se ajustem em telas menores */
 }
 
 .search-banner {
-  width: 200px; /* Definindo uma largura fixa para a imagem do banner */
-  height: auto; /* Permitindo que a altura da imagem seja ajustada automaticamente para manter a proporção */
+  max-width: 200px;
+  margin-bottom: 10px; /* Adicionando margem inferior para espaçamento em telas menores */
 }
 
 .search-bar {
-  flex-grow: 1;
-  margin-top: 20px; /* Adicionando margem superior para separar o cabeçalho dos resultados da busca */
   display: flex;
-  justify-content: center; /* Centralizando os elementos dentro do contêiner de pesquisa */
-  align-items: center;
+  flex-grow: 1;
+  margin-left: 20px;
 }
 
 .search-input {
@@ -44,6 +40,7 @@
 /* Estilos para os resultados da busca */
 .search-results {
   margin-top: 20px;
+  padding: 0 20px; /* Adicionando preenchimento horizontal para os resultados da busca */
 }
 
 .search-results table {
@@ -69,4 +66,104 @@
   padding: 10px;
   font-size: 16px;
   color: #555;
+}
+
+/* Estilos para os produtos adicionados ao orçamento */
+.in-cart {
+  background-color: #e0f7fa; /* Destaque para produtos adicionados ao carrinho */
+}
+
+/* Estilos para o resumo do carrinho */
+.cart-summary {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cart-summary h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.generate-quote-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para a página de orçamento */
+.quote {
+  padding: 20px;
+  text-align: center;
+}
+
+.quote table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.quote th, .quote td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.quote th {
+  background-color: #f4f4f4;
+}
+
+.quote tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.quote-actions {
+  margin-top: 20px;
+}
+
+.print-button, .back-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.print-button {
+  background-color: #17a2b8;
+}
+
+.back-button {
+  background-color: #6c757d;
+}
+
+/* Estilos para o campo de input de quantidade */
+.quantity-input {
+  width: 60px; /* Definindo a largura do campo de input de quantidade */
+  padding: 5px;
+  font-size: 16px;
+  text-align: center; /* Centralizando o texto no campo de input */
+}
+
+/* Estilos para responsividade */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .search-input, .search-button {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .search-button {
+    border-radius: 5px;
+  }
 }
