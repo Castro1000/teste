@@ -6,6 +6,7 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
   const [cart, setCart] = useState([]);
+
   const handleSearch = async () => {
     try {
       const response = await fetch(`https://buscadepneus.vercel.app/api/search?q=${query}`);
@@ -24,13 +25,10 @@ const App = () => {
   };
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => {
-      return total + item.Preco * item.quantity;
-    }, 0);
+    return cart.reduce((total, item) => total + item.Preco * item.quantity, 0);
   };
 
   const handleGenerateQuote = () => {
-    // Redirecionar para a página de orçamento, passando os dados do orçamento
     const quoteData = JSON.stringify(cart);
     localStorage.setItem('quoteData', quoteData);
     window.location.href = '/quote';
@@ -63,8 +61,8 @@ const App = () => {
             {Number(calculateTotal()).toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL',
-              minimumFractionDigits: 4,
-              maximumFractionDigits: 4,
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
             })}
           </h3>
           <button onClick={handleGenerateQuote} className="generate-quote-button">
