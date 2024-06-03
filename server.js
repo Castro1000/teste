@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000; // Use a porta definida pelo ambiente ou 3000
+const port = process.env.PORT || 3306; // Use a porta definida pelo ambiente ou 3000
 
 app.use(cors({
   origin: 'https://buscadepneus.vercel.app', // Substitua pelo domínio correto
