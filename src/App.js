@@ -6,10 +6,9 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
   const [cart, setCart] = useState([]);
-
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:3306/api/search?q=${query}`);
+      const response = await fetch(`https://buscadepneus.vercel.app/:3306/api/search?q=${query}`);
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }
