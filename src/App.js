@@ -8,7 +8,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://192.168.1.197/api/search?q=${query}`);
+      const response = await fetch(`http://192.168.1.197:3306/api/search?q=${query}`);
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }
