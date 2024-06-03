@@ -1,13 +1,13 @@
-// server.js (Backend)
-
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-const port = 3306; // Porta do servidor Node.js
+const port = process.env.PORT || 3306; // Usar a porta definida pelo ambiente ou 3000
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://buscadepneus.vercel.app', // Substitua pelo domínio correto
+}));
 app.use(express.json());
 
 // Configuração do banco de dados
