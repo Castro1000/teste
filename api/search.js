@@ -1,3 +1,5 @@
+//pasta api ./search.js
+
 const mysql = require('mysql');
 
 // Configuração do banco de dados
