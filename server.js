@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3306; // Use a porta definida pelo ambiente ou 3000
 
 app.use(cors({
-  origin: 'https://localhost', // Substitua pelo domínio correto
+  origin: 'https://buscadepneus.vercel.app/', // Substitua pelo domínio correto
 }));
 app.use(express.json());
 

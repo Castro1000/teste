@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline React App</title>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- React libraries -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  
+  <!-- Babel compiler (transform JSX/ES6 to JS) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  
+  <!-- React components -->
+  <script type="text/babel">
+    // Your React components go here
+    // Copy and paste the content of your React components here
+  </script>
+  
+  <!-- Main script to render React components -->
+  <script type="text/babel">
+    // Render your root component into the 'root' div
+    const rootElement = document.getElementById('root');
+    ReactDOM.render(<App />, rootElement);
+  </script>
+</body>
+</html>
