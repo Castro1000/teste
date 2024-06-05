@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.buscadepneus.twa",
+        "sha256_cert_fingerprints": ["24:58:18:E6:2A:71:F5:FD:7D:CB:8D:D9:B4:DB:CA:0D:63:C9:F4:8F:EB:8C:55:36:04:4E:A3:9B:FC:C9:DB:7D"]
+      }
+    }]
