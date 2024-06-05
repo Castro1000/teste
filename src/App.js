@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SearchResults from './SearchResults';
 import './styles.css';
 
+
+
 const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
