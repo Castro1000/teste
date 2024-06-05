@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://buscadepneus.vercel.app/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
@@ -26,5 +26,6 @@
   "categories": [
     "business",
     "shopping"
-  ]
+  ],
+  "lang": "pt"
 }
