@@ -2,15 +2,27 @@ import React, { useState } from 'react';
 import SearchResults from './SearchResults';
 import './styles.css';
 
+
+
 const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
   const [cart, setCart] = useState([]);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> fa810b7918aae969b0f3937a31412144af4d4369
   const [showQuote, setShowQuote] = useState(false);
 
   const handleSearch = async () => {
     try {
       const response = await fetch(`http://localhost:3306/api/search?q=${query}`); // Adicionado http://
+=======
+
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`/api/search?q=${query}`);
+>>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }
@@ -21,6 +33,10 @@ const App = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> fa810b7918aae969b0f3937a31412144af4d4369
   const addToCart = (product) => {
     setCart([...cart, { ...product, quantity: 1 }]);
   };
@@ -75,20 +91,48 @@ const App = () => {
     );
   }
 
+<<<<<<< HEAD
+=======
+=======
+  const handleAddToCart = (product, quantity) => {
+    setCart([...cart, { ...product, quantity: parseInt(quantity) }]);
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.Preco * item.quantity, 0);
+  };
+
+  const handleGenerateQuote = () => {
+    const quoteData = JSON.stringify(cart);
+    localStorage.setItem('quoteData', quoteData);
+    window.location.href = '/quote';
+  };
+
+>>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
+>>>>>>> fa810b7918aae969b0f3937a31412144af4d4369
   return (
     <div className="app">
-      <header>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s" alt="Banner da Busca" className="search-banner" />
+      <header className="header">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTGihoZ-eh698DsTk13pKlSbjKN8DS67L8HoIyrFNJg&s"
+          alt="Banner da Busca"
+          className="search-banner"
+        />
         <div className="search-bar">
           <input
             type="text"
             placeholder="Buscar..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            className="search-input"
           />
-          <button onClick={handleSearch}>Pesquisar</button>
+          <button onClick={handleSearch} className="search-button">Pesquisar</button>
         </div>
       </header>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> fa810b7918aae969b0f3937a31412144af4d4369
       <SearchResults results={results} addToCart={addToCart} />
       {cart.length > 0 && (
         <div className="cart-summary">
@@ -128,6 +172,26 @@ const App = () => {
             </tfoot>
           </table>
           <button className="generate-quote-button" onClick={handleSaveQuote}>Salvar Orçamento</button>
+<<<<<<< HEAD
+=======
+=======
+      <SearchResults results={results} onAddToCart={handleAddToCart} cart={cart} />
+      {cart.length > 0 && (
+        <div className="cart-summary">
+          <h3>
+            Total: 
+            {Number(calculateTotal()).toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </h3>
+          <button onClick={handleGenerateQuote} className="generate-quote-button">
+            Gerar Orçamento
+          </button>
+>>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
+>>>>>>> fa810b7918aae969b0f3937a31412144af4d4369
         </div>
       )}
     </div>

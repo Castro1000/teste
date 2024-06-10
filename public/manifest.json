@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "busca pneu",
+  "name": "busca pneu",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,14 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://buscadepneus.vercel.app/",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Site que pesquisa medidas de pneu, preço e quantidade em uma loja",
+  "categories": [
+    "business",
+    "shopping"
+  ],
+  "lang": "pt"
 }

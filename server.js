@@ -3,14 +3,18 @@ const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-const port = 3306; // Porta do servidor Node.js
+const port = process.env.PORT || 3306;
 
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://buscadepneus.vercel.app/', // Substitua pelo domínio correto
+}));
 app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '192.168.1.197', // Atualize com seu novo host, se necessário
+
+  host: '192.168.1.197',
   user: 'root',
   password: '',
   database: 'sgveauto',
