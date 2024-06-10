@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* Estilos para o contêiner principal */
 .app {
   font-family: 'Arial', sans-serif;
@@ -16,8 +15,7 @@ header {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-=======
-/* Estilos para o cabeçalho */
+
 .header {
   background-color: #f8f9fa;
   padding: 20px;
@@ -30,11 +28,11 @@ header {
 
 .search-banner {
   max-width: 200px;
-<<<<<<< HEAD
+
   margin-bottom: 10px;
-=======
+
   margin-bottom: 10px; /* Adicionando margem inferior para espaçamento em telas menores */
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
+
 }
 
 .search-bar {
@@ -43,26 +41,20 @@ header {
   margin-left: 20px;
 }
 
-<<<<<<< HEAD
+
 .search-bar input {
-=======
+
 .search-input {
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
   flex-grow: 1;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
-<<<<<<< HEAD
+
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar button {
-=======
-}
-
 .search-button {
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
   padding: 10px 20px;
   font-size: 16px;
   background-color: #007bff;
@@ -73,7 +65,6 @@ header {
   transition: background-color 0.3s ease;
 }
 
-<<<<<<< HEAD
 .search-bar button:hover {
   background-color: #0056b3;
 }
@@ -180,7 +171,6 @@ header {
   font-weight: bold;
 }
 
-=======
 /* Estilos para os resultados da busca */
 .search-results {
   margin-top: 20px;
@@ -260,7 +250,6 @@ header {
   background-color: #f4f4f4;
 }
 
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
 .quote tr:nth-child(even) {
   background-color: #f9f9f9;
 }
@@ -272,37 +261,27 @@ header {
 .print-button, .back-button {
   padding: 10px 20px;
   font-size: 16px;
-<<<<<<< HEAD
-=======
   background-color: #007bff;
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-<<<<<<< HEAD
   transition: background-color 0.3s ease;
-=======
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
 }
 
 .print-button {
+
   background-color: #17a2b8;
 }
 
-<<<<<<< HEAD
 .print-button:hover {
   background-color: #138496;
 }
-
-=======
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
 .back-button {
   background-color: #6c757d;
 }
 
-<<<<<<< HEAD
 .back-button:hover {
   background-color: #5a6268;
 }
@@ -316,14 +295,13 @@ header {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-=======
+
 /* Estilos para o campo de input de quantidade */
 .quantity-input {
   width: 60px; /* Definindo a largura do campo de input de quantidade */
   padding: 5px;
   font-size: 16px;
   text-align: center; /* Centralizando o texto no campo de input */
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
 }
 
 /* Estilos para responsividade */
@@ -333,20 +311,12 @@ header {
     margin-left: 0;
   }
 
-<<<<<<< HEAD
-  .search-bar input, .search-bar button {
-=======
+
   .search-input, .search-button {
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
     border-radius: 5px;
     margin-bottom: 10px;
   }
-
-<<<<<<< HEAD
   .search-bar button {
-=======
-  .search-button {
->>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
     border-radius: 5px;
   }
 }
