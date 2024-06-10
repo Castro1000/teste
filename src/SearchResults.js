@@ -14,6 +14,21 @@ const SearchResults = ({ results, onAddToCart, cart }) => {
     return cart.some(item => item.Descricao === product.Descricao);
   };
 
+<<<<<<< HEAD
+const SearchResults = ({ results, addToCart }) => {
+  return (
+    <div className="search-results">
+      <h2>RESULTADOS DA PESQUISA:</h2>
+      {results.map((result, index) => (
+        <div key={index} className="search-result-item">
+          <p><strong>Descrição:</strong> {result.Descricao}</p>
+          <p><strong>Preço:</strong> R${result.Preco}</p>
+          <p><strong>Quantidade em Estoque:</strong> {result.Quantidade}</p>
+          <button onClick={() => addToCart(result)}>Adicionar ao Carrinho</button>
+          <hr />
+        </div>
+      ))}
+=======
   return (
     <div className="search-results">
       {results.length > 0 ? (
@@ -64,6 +79,7 @@ const SearchResults = ({ results, onAddToCart, cart }) => {
       ) : (
         <p>Nenhum resultado encontrado.</p>
       )}
+>>>>>>> 7dbab8be13678b125d581b33f493b53c8cf9e35c
     </div>
   );
 };

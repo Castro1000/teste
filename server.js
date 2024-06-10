@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3306;
 
+
 app.use(cors({
   origin: 'https://buscadepneus.vercel.app/', // Substitua pelo domínio correto
 }));
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
+
   host: '192.168.1.197',
   user: 'root',
   password: '',
