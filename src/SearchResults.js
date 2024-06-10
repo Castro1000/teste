@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchResults = ({ results, onAddToCart, cart }) => {
+const SearchResults = ({ results, onAddToCart, cart, dollarRate }) => {
   const [quantities, setQuantities] = useState({});
 
   const handleQuantityChange = (index, value) => {
@@ -21,7 +21,9 @@ const SearchResults = ({ results, onAddToCart, cart }) => {
           <thead>
             <tr>
               <th>Descrição</th>
-              <th>Preço</th>
+              <th>Preço (R$)</th>
+              <th>Preço (US$)</th>
+              <th>Estoque</th>
               <th>Quantidade</th>
               <th>Adicionar</th>
             </tr>
@@ -34,15 +36,19 @@ const SearchResults = ({ results, onAddToCart, cart }) => {
                   {Number(result.Preco).toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
-                    minimumFractionDigits: 4,
-                    maximumFractionDigits: 4,
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
                   })}
                 </td>
+                <td>
+                  {(result.Preco / dollarRate).toFixed(2)}
+                </td>
+                <td>{result.Quantidade}</td>
                 <td>
                   <input
                     type="number"
                     min="1"
-                    max="9999" // Limitar a quantidade máxima para 4 dígitos
+                    max="9999"
                     value={quantities[index] || ''}
                     onChange={(e) => handleQuantityChange(index, e.target.value)}
                     className="quantity-input"

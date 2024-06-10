@@ -6,6 +6,8 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState('');
   const [cart, setCart] = useState([]);
+  const [dollarRate, setDollarRate] = useState(1);
+
   const handleSearch = async () => {
     try {
       const response = await fetch(`http://localhost:3306/api/search?q=${query}`);
@@ -30,7 +32,6 @@ const App = () => {
   };
 
   const handleGenerateQuote = () => {
-    // Redirecionar para a página de orçamento, passando os dados do orçamento
     const quoteData = JSON.stringify(cart);
     localStorage.setItem('quoteData', quoteData);
     window.location.href = '/quote';
@@ -54,8 +55,19 @@ const App = () => {
           />
           <button onClick={handleSearch} className="search-button">Pesquisar</button>
         </div>
+        <div className="dollar-rate">
+          <label>
+            Taxa Dólar:
+            <input
+              type="number"
+              step="0.01"
+              value={dollarRate}
+              onChange={(e) => setDollarRate(parseFloat(e.target.value))}
+            />
+          </label>
+        </div>
       </header>
-      <SearchResults results={results} onAddToCart={handleAddToCart} cart={cart} />
+      <SearchResults results={results} onAddToCart={handleAddToCart} cart={cart} dollarRate={dollarRate} />
       {cart.length > 0 && (
         <div className="cart-summary">
           <h3>
@@ -63,8 +75,8 @@ const App = () => {
             {Number(calculateTotal()).toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL',
-              minimumFractionDigits: 4,
-              maximumFractionDigits: 4,
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
             })}
           </h3>
           <button onClick={handleGenerateQuote} className="generate-quote-button">
