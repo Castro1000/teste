@@ -1,0 +1,75 @@
+.promotions {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .promotions-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .promotions-header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .promotions-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .promotion-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .promotion-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .promotion-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .promotion-info {
+    padding: 15px;
+  }
+  
+  .promotion-info h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .promotion-info p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .promotions-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .promotion-item {
+      max-width: 90%;
+    }
+  }
+  
