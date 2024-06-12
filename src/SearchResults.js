@@ -21,6 +21,8 @@ const SearchResults = ({ results, onAddToCart, cart, dollarRate }) => {
           <thead>
             <tr>
               <th>Descrição</th>
+              <th>Código Vector</th>
+              <th>NCM</th>
               <th>Preço (R$)</th>
               <th>Preço (US$)</th>
               <th>Estoque</th>
@@ -32,6 +34,9 @@ const SearchResults = ({ results, onAddToCart, cart, dollarRate }) => {
             {results.map((result, index) => (
               <tr key={index} className={isInCart(result) ? 'in-cart' : ''}>
                 <td>{result.Descricao}</td>
+                <td>{result.Cod_vector}</td>
+                <td>{result.Ncm}</td>
+                
                 <td>
                   {Number(result.Preco).toLocaleString('pt-BR', {
                     style: 'currency',

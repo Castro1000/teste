@@ -1,5 +1,3 @@
-// server.js (Backend)
-
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -12,7 +10,7 @@ app.use(express.json());
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: '192.168.1.103',
+  host: '192.168.1.197', // Altere para o seu domínio externo
   user: 'root',
   password: '',
   database: 'sgveauto',
@@ -30,7 +28,8 @@ db.connect(err => {
 // Rota para buscar produtos
 app.get('/api/search', (req, res) => {
   const query = req.query.q;
-  const sql = `SELECT Descricao, Preco, Quantidade FROM produto WHERE Descricao LIKE ?`;
+  const sql = `SELECT Descricao, Preco, Quantidade, Ncm, Cod_vector FROM produto WHERE 
+   Substring(Descricao,1,4)<>'INAT' AND Descricao LIKE ? `;
   db.query(sql, [`%${query}%`], (err, results) => {
     if (err) {
       console.error('Erro ao buscar os dados:', err);
