@@ -10,7 +10,7 @@ const App = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`https://buscadepneus.vercel.app:3306/api/search?q=${query}`);
+      const response = await fetch(`https://buscadepneus.vercel.app/api/search?q=${query}`);
       if (!response.ok) {
         throw new Error('Erro na solicitação de busca');
       }
@@ -34,7 +34,7 @@ const App = () => {
   const handleGenerateQuote = () => {
     const quoteData = JSON.stringify(cart);
     localStorage.setItem('quoteData', quoteData);
-    window.location.href = '/quote';
+    window.location.href = '/quote'; // Verifique se essa rota existe no seu aplicativo
   };
 
   return (
