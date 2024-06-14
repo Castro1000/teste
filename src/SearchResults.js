@@ -24,7 +24,6 @@ const SearchResults = ({ results, onAddToCart, cart, dollarRate }) => {
               <th>Código Vector</th>
               <th>NCM</th>
               <th>Preço (R$)</th>
-              <th>Preço (US$)</th>
               <th>Estoque</th>
               <th>Quantidade</th>
               <th>Adicionar</th>
@@ -44,9 +43,6 @@ const SearchResults = ({ results, onAddToCart, cart, dollarRate }) => {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}
-                </td>
-                <td>
-                  {(result.Preco / dollarRate).toFixed(2)}
                 </td>
                 <td>{result.Quantidade}</td>
                 <td>
